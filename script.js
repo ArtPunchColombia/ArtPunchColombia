@@ -1,11 +1,11 @@
 // ===== util: parseo de hash con query =====
 function parseHash(){
   const raw = location.hash.replace(/^#\/?/, '');
-  const [route, query = ''] = raw.split('?');
+  const [route, query=''] = raw.split('?');
   const params = {};
-  if (query) {
-    query.split('&').forEach(p => {
-      const [k, v] = p.split('=');
+  if(query){
+    query.split('&').forEach(p=>{
+      const [k,v] = p.split('=');
       params[decodeURIComponent(k)] = decodeURIComponent(v || '');
     });
   }
@@ -36,26 +36,17 @@ document.addEventListener('click', (e)=>{
   const a = e.target.closest('[data-link]');
   if(!a) return;
   const href = a.getAttribute('href') || '';
-  if(href.startsWith('#/')) {
-    e.preventDefault();
-    location.hash = href.replace('#','');
-  }
+  if(href.startsWith('#/')) { e.preventDefault(); location.hash = href.replace('#',''); }
 });
 
-// ===== menú móvil =====
+// ===== menú móvil (sheet a la IZQUIERDA) =====
 const sheet = document.getElementById('sheet');
-
 document.getElementById('openMenu')?.addEventListener('click', ()=>{
   sheet?.classList.add('open');
 });
-
 sheet?.addEventListener('click', (e)=>{
-  // Cerrar al tocar un enlace
-  if (e.target.matches('a')) sheet.classList.remove('open');
-  // Cerrar al tocar el botón "×"
-  if (e.target.closest('.sheet-close')) sheet.classList.remove('open');
+  if(e.target.matches('a')) sheet.classList.remove('open');
 });
-
 document.addEventListener('keydown', (e)=>{
   if(e.key === 'Escape') sheet?.classList.remove('open');
 });
@@ -102,22 +93,26 @@ function renderCart(){
 function addToCart(id, name, price, img){
   const item = cart.get(id) || {qty:0, name, price, img};
   if(!item.img && img) item.img = img;
-  item.qty += 1; cart.set(id, item);
-  renderCart(); toast('Producto agregado');
+  item.qty += 1;
+  cart.set(id, item);
+  renderCart();
+  toast('Producto agregado');
 }
 
 function changeQty(id, d){
   const it = cart.get(id); if(!it) return;
-  it.qty += d; if(it.qty<=0) cart.delete(id); renderCart();
+  it.qty += d;
+  if(it.qty <= 0) cart.delete(id);
+  renderCart();
 }
 
 document.addEventListener('click', (e)=>{
   const btnAdd = e.target.closest('[data-add]');
   if(btnAdd){
-    const card = btnAdd.closest('.card');
+    const card  = btnAdd.closest('.card');
     const title = card.querySelector('h3')?.textContent?.trim() || 'Producto';
     const price = Number(card.querySelector('.price strong')?.textContent?.replace(/[^0-9]/g,'') || 0);
-    const img = card.querySelector('.card-media img')?.getAttribute('src') || '';
+    const img   = card.querySelector('.card-media img')?.getAttribute('src') || '';
     addToCart(btnAdd.dataset.add, title, price, img);
   }
   if(e.target.matches('[data-inc]')) changeQty(e.target.dataset.inc, +1);
@@ -128,7 +123,9 @@ document.addEventListener('click', (e)=>{
 document.getElementById('checkoutBtn')?.addEventListener('click', (e)=>{
   e.preventDefault();
   if(cart.size === 0){ toast('El carrito está vacío'); return; }
-  const items = [...cart.values()].map((it,i)=> `${i+1}. ${it.name} × ${it.qty} — $${(it.price*it.qty).toLocaleString('es-CO')}`).join('%0A');
+  const items = [...cart.values()]
+    .map((it,i)=> `${i+1}. ${it.name} × ${it.qty} — $${(it.price*it.qty).toLocaleString('es-CO')}`)
+    .join('%0A');
   const total = [...cart.values()].reduce((s,i)=>s + i.qty*i.price, 0);
   const msg = `Hola, quiero finalizar mi compra:%0A%0A${items}%0A%0ATotal: $${total.toLocaleString('es-CO')}`;
   const url = `https://wa.me/573013748515?text=${msg}`;
@@ -143,13 +140,12 @@ function toast(msg){
   document.body.appendChild(t);
   requestAnimationFrame(()=>{t.style.opacity='1'; t.style.transform='translateY(0)';});
   setTimeout(()=>{
-    t.style.opacity='0';
-    t.style.transform='translateY(6px)';
+    t.style.opacity='0'; t.style.transform='translateY(6px)';
     setTimeout(()=>t.remove(),200);
   }, 1600);
 }
 
-// ===== Vista rápida (overlay) con clic en la imagen =====
+// ===== Vista rápida (overlay) — abre con CLIC =====
 (function(){
   const overlay = document.createElement('div');
   overlay.className = 'hover-preview';
@@ -170,9 +166,6 @@ function toast(msg){
     if(!media) return;
 
     function open(){
-      // En táctiles no abrimos overlay, para no molestar
-      if (window.matchMedia('(pointer: coarse)').matches) return;
-
       const mainImg = overlay.querySelector('.preview-main img');
       const thumbs  = overlay.querySelector('.preview-thumbs');
       thumbs.innerHTML = '';
@@ -185,7 +178,6 @@ function toast(msg){
       urls.forEach((u,i)=>{
         const im = new Image();
         im.src = u; im.alt = 'Vista ' + (i+1);
-        im.addEventListener('mouseenter', ()=>show(i));
         im.addEventListener('click', ()=>show(i));
         thumbs.appendChild(im);
       });
@@ -213,11 +205,10 @@ function toast(msg){
       document.addEventListener('keydown', onEsc);
     }
 
-    // Antes era mouseenter; ahora es clic, menos invasivo
     media.addEventListener('click', open);
   }
 
-  // helper para enlazar galerías cuando clonamos tarjetas
+  // helper público para colecciones clonadas
   window.attachGalleries = (root=document) => {
     root.querySelectorAll('.card[data-gallery]').forEach(bindGallery);
   };
@@ -238,17 +229,18 @@ function toggleCollections(filtered){
 
 function renderCollection(slug){
   const title = NAMES[slug] || 'Colección';
-  const titleEl = document.getElementById('collectionTitle');
-  if (titleEl) titleEl.textContent = `Colección ${title}`;
+  document.getElementById('collectionTitle').textContent = `Colección ${title}`;
 
   const srcCards = [...document.querySelectorAll('#gridCatalogo .card')];
   const grid = document.getElementById('collectionsGrid');
   grid.innerHTML = '';
 
-  const matches = srcCards.filter(c => {
-    const col = (c.dataset.collection || '').split(',').map(s=>s.trim().toLowerCase());
-    return col.includes(slug);
-  });
+  const matches = srcCards.filter(c =>
+    (c.dataset.collection || '')
+      .split(',')
+      .map(s=>s.trim().toLowerCase())
+      .includes(slug)
+  );
 
   if(matches.length === 0){
     grid.innerHTML = `<div class="card" style="padding:18px">Por ahora no hay piezas publicadas en esta colección.</div>`;
@@ -264,17 +256,17 @@ function renderCollection(slug){
   toggleCollections(true);
 }
 
-// ===== Contacto: enviar por correo (mailto a svelasco14@hotmail.com) =====
+// ===== CONTACTO: envío por correo =====
 const contactForm = document.getElementById('contactForm');
-if (contactForm){
+if(contactForm){
   contactForm.addEventListener('submit', (e)=>{
     e.preventDefault();
     const data = new FormData(contactForm);
-    const nombre  = (data.get('nombre') || '').toString().trim() || 'Sin nombre';
-    const email   = (data.get('email')  || '').toString().trim() || 'Sin correo';
-    const mensaje = (data.get('mensaje')|| '').toString().trim();
+    const nombre  = data.get('nombre') || '';
+    const email   = data.get('email') || '';
+    const mensaje = data.get('mensaje') || '';
 
-    const subject = encodeURIComponent('Nuevo mensaje desde Art Punch Colombia');
+    const subject = encodeURIComponent(`Consulta desde Art Punch Colombia - ${nombre}`);
     const body = encodeURIComponent(
       `Nombre: ${nombre}\nEmail: ${email}\n\nMensaje:\n${mensaje}`
     );
