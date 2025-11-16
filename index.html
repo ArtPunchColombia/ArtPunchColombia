@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
@@ -183,7 +183,7 @@
           </article>
 
           <!-- Unicornio (sin colección) -->
-          <article class="card" data-cat="cojines">
+          <article class="card" data-cat="cojines" data-collection="">
             <div class="card-media"><img src="./assets/cojin9.png" alt="Cojín unicornio" loading="lazy" decoding="async" width="1200" height="1200"></div>
             <div class="card-body">
               <h3>Cojín unicornio</h3>
@@ -192,7 +192,7 @@
             </div>
           </article>
 
-          <!-- Rombos beige (10|11|12) -->
+          <!-- Rombos beige -->
           <article class="card" data-cat="cojines" data-collection="geometria" data-gallery="./assets/cojin10.png|./assets/cojin11.png|./assets/cojin12.png">
             <div class="card-media"><img src="./assets/cojin10.png" alt="Cojín rombos beige" loading="lazy" decoding="async" width="1200" height="1200"></div>
             <div class="card-body">
@@ -232,7 +232,7 @@
             </div>
           </article>
 
-          <!-- Bolso flores (1|2|3) -->
+          <!-- Bolso flores -->
           <article class="card" data-cat="bolsos" data-collection="flora" data-gallery="./assets/bolso1.png|./assets/bolso2.png|./assets/bolso3.png">
             <div class="card-media"><img src="./assets/bolso1.png" alt="Bolso flores punch needle" loading="lazy" decoding="async" width="1200" height="1200"></div>
             <div class="card-body">
@@ -242,7 +242,7 @@
             </div>
           </article>
 
-          <!-- Cojín flores (portada) -->
+          <!-- Cojín flores portada -->
           <article class="card" data-cat="cojines" data-collection="flora">
             <div class="card-media"><img src="./assets/portada.png" alt="Cojín flores" loading="lazy" decoding="async" width="1200" height="1200"></div>
             <div class="card-body">
@@ -252,7 +252,7 @@
             </div>
           </article>
 
-          <!-- ===== NUEVOS NAVIDEÑOS ===== -->
+          <!-- Nuevos navideños -->
           <article class="card" data-cat="cojines" data-collection="navidenos">
             <div class="card-media"><img src="./assets/cojin16.png" alt="Cojín oso navideño" loading="lazy" decoding="async" width="1200" height="1200"></div>
             <div class="card-body">
@@ -339,7 +339,7 @@
       <div class="container" style="margin-top:28px">
         <div class="section-title"><h2 class="display">Contacto</h2></div>
 
-        <div class="about">
+        <div class="grid cols-2">
           <!-- Panel izquierdo: formulario -->
           <form id="contactForm" class="panel" autocomplete="on">
             <div class="form-grid">
@@ -402,13 +402,20 @@
     </section>
   </main>
 
-  <!-- Drawer móvil -->
+  <!-- Drawer móvil mejorado -->
   <aside class="sheet" id="sheet">
-    <a href="#/inicio" data-link>Inicio</a>
-    <a href="#/catalogo" data-link>Catálogo</a>
-    <a href="#/colecciones" data-link>Colecciones</a>
-    <a href="#/sobre" data-link>Sobre</a>
-    <a href="#/contacto" data-link>Contacto</a>
+    <div class="sheet-header">
+      <span>Menú</span>
+      <button type="button" class="sheet-close" aria-label="Cerrar menú">×</button>
+    </div>
+
+    <nav class="sheet-nav" aria-label="Navegación móvil">
+      <a href="#/inicio" data-link>Inicio</a>
+      <a href="#/catalogo" data-link>Catálogo</a>
+      <a href="#/colecciones" data-link>Colecciones</a>
+      <a href="#/sobre" data-link>Sobre</a>
+      <a href="#/contacto" data-link>Contacto</a>
+    </nav>
   </aside>
 
   <footer>
@@ -439,3 +446,4 @@
   <script src="./script.js"></script>
 </body>
 </html>
+
