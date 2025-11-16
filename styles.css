@@ -53,7 +53,24 @@ header{
 .menu{display:flex; align-items:center; gap:28px}
 .menu a{color:#1f1f1f; text-decoration:none; font-weight:500}
 .menu a:hover{color:var(--accent)}
-.menu-toggle{display:none; background:#fff; border:1px solid var(--line); border-radius:10px; padding:10px; cursor:pointer}
+
+/* Botón menú móvil */
+.menu-toggle{
+  display:none;
+  align-items:center;
+  justify-content:center;
+  width:40px;
+  height:40px;
+  padding:0;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:#fff;
+  box-shadow:var(--shadow-sm);
+  cursor:pointer;
+  font-size:20px;
+  line-height:1;
+}
+
 .cart{display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border:1px solid var(--line); border-radius:999px; background:#fff}
 .cart b{font-weight:600}
 
@@ -71,7 +88,7 @@ header{
 /* Hero */
 .hero{
   position:relative;
-  padding: clamp(40px, 6vw, 80px) 0 40px; /* un poco menos alto para evitar hueco en móvil */
+  padding: clamp(40px, 6vw, 80px) 0 40px;
 }
 .hero-grid{
   display:grid;
@@ -103,8 +120,21 @@ header{
   border-radius:var(--radius); overflow:hidden;
   display:grid; grid-template-rows: var(--card-media-h) var(--card-body-h);
 }
-.card-media{height:100%; background:#f3f1ec}
+.card-media{height:100%; background:#f3f1ec; position:relative;}
 .card-media img{width:100%; height:100%; object-fit:cover; object-position:center}
+
+/* Indicador "Clic para ver más" */
+.card[data-gallery] .card-media::after{
+  content:"Clic para ver más";
+  position:absolute;
+  right:12px;
+  bottom:12px;
+  padding:6px 10px;
+  font-size:12px;
+  border-radius:999px;
+  background:rgba(0,0,0,.65);
+  color:#fff;
+}
 
 /* Franja blanca inferior uniforme */
 .card-body{
@@ -170,15 +200,65 @@ footer a:hover{color:var(--accent)}
 .view{display:none}
 .view.active{display:block}
 
-/* Sheet móvil */
+/* Sheet móvil (menú lateral bonito) */
 .sheet{
-  position:fixed; inset:0 0 0 auto; width:80vw; max-width:320px;
-  background:#fff; border-left:1px solid var(--line);
-  transform:translateX(120%); transition:transform .25s ease;
-  box-shadow:var(--shadow-md); padding:24px; z-index:60;
+  position:fixed;
+  inset:0 0 0 auto;
+  width:78vw;
+  max-width:320px;
+  background:#fff;
+  border-left:1px solid var(--line);
+  border-radius:18px 0 0 18px;
+  transform:translateX(120%);
+  transition:transform .25s ease;
+  box-shadow:var(--shadow-md);
+  padding:20px 20px 28px;
+  z-index:60;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
 }
 .sheet.open{transform:none}
-.sheet a{display:block; color:#111; text-decoration:none; padding:12px 0}
+
+/* Encabezado del sheet */
+.sheet-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:8px;
+}
+.sheet-header span{
+  font-family:Fraunces, serif;
+  font-size:18px;
+  font-weight:600;
+}
+.sheet-close{
+  border:none;
+  background:transparent;
+  font-size:24px;
+  line-height:1;
+  cursor:pointer;
+  padding:4px 6px;
+}
+
+/* Navegación del sheet */
+.sheet-nav{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  margin-top:4px;
+}
+.sheet-nav a{
+  display:flex;
+  align-items:center;
+  color:#111;
+  text-decoration:none;
+  padding:10px 0;
+  border-bottom:1px solid var(--line);
+  font-weight:500;
+}
+.sheet-nav a:last-child{border-bottom:none}
+.sheet-nav a:hover{color:var(--accent)}
 
 /* Vista rápida (overlay) */
 .hover-preview{
@@ -264,13 +344,20 @@ footer a:hover{color:var(--accent)}
     gap:20px;
   }
 
-  /* Contacto: formulario y panel de info apilados (ya lo maneja .grid.cols-2) */
+  /* Contacto: formulario y panel de info apilados (ya lo maneja grid.cols-2) */
   .form-grid{grid-template-columns:1fr}
 
   /* Un poco más de separación inferior en los paneles */
   .panel{padding:20px}
 
-  /* Carrito: filas en columna si se hace muy angosto */
+  /* Ajustar indicador "Clic para ver más" */
+  .card[data-gallery] .card-media::after{
+    font-size:11px;
+    right:8px;
+    bottom:8px;
+  }
+
+  /* Carrito: si se hace MUY angosto, mejor en columna */
   .cart-row{
     flex-direction:row;
     align-items:flex-start;
@@ -278,7 +365,7 @@ footer a:hover{color:var(--accent)}
 
 }
 
-/* Extra pequeño (por si acaso, teléfonos muy angostos) */
+/* Extra pequeño */
 @media (max-width:480px){
   .hero .headline{font-size:28px}
   .cart-row{
