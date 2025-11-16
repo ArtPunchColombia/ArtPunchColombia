@@ -1,0 +1,441 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Art Punch Colombia — Punch needle y bordado creativo</title>
+  <meta name="description" content="Piezas en punch needle y bordado creativo. Hecho con amor en Colombia. Envíos nacionales e internacionales." />
+
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="./styles.css">
+
+  <!-- Iconos -->
+  <link rel="icon" href="./assets/logo.png" type="image/png">
+  <link rel="apple-touch-icon" href="./assets/logo.png">
+
+  <!-- Preload hero -->
+  <link rel="preload" as="image" href="./assets/portada.png" imagesizes="(min-width:1024px) 45vw, 100vw">
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#/inicio" class="brand" data-link>
+        <img src="./assets/logo.png" alt="Logo de Art Punch Colombia" width="40" height="40">
+        <h1>Art&nbsp;Punch&nbsp;Colombia</h1>
+      </a>
+
+      <nav class="menu" aria-label="Principal">
+        <a href="#/inicio" data-link>Inicio</a>
+        <a href="#/catalogo" data-link>Catálogo</a>
+        <a href="#/colecciones" data-link>Colecciones</a>
+        <a href="#/sobre" data-link>Sobre</a>
+        <a href="#/contacto" data-link>Contacto</a>
+      </nav>
+
+      <button class="menu-toggle" aria-label="Abrir menú" id="openMenu">☰</button>
+
+      <a class="cart" href="#/carrito" aria-label="Ver carrito">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h3.6l2.4 12.6a2 2 0 0 0 2 1.6h9.4a2 2 0 0 0 2-1.6l1.3-7.6H6"></path></svg>
+        <b id="cartCount">0</b>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== INICIO ===== -->
+    <section class="view active" data-route="inicio">
+      <div class="container hero">
+        <div class="hero-grid">
+          <div>
+            <h2 class="display headline">Textiles con carácter. Punch needle y bordado para espacios que importan.</h2>
+            <p class="sub">Piezas diseñadas y hechas a mano en Colombia. Materiales nobles, acabados cuidados y una paleta sobria con coral como acento. Envíos nacionales e internacionales.</p>
+            <div style="margin-top:22px; display:flex; gap:12px; flex-wrap:wrap">
+              <a class="btn accent" href="#/catalogo" data-link>Ver catálogo</a>
+              <a class="btn" href="https://www.instagram.com/artpunchcolombia/" target="_blank" rel="noreferrer">Instagram</a>
+            </div>
+          </div>
+          <div class="hero-card">
+            <figure class="hero-figure">
+              <img src="./assets/portada.png" alt="Bolso/cojín bordado en punch needle con flores" loading="eager" decoding="async" width="1600" height="2000">
+            </figure>
+          </div>
+        </div>
+      </div>
+
+      <!-- Destacados -->
+      <section class="container" style="padding-top:42px">
+        <div class="section-title">
+          <h2 class="display">Destacados</h2>
+          <a class="btn" href="#/catalogo" data-link>Todos los productos</a>
+        </div>
+
+        <div class="grid cols-3">
+          <article class="card" data-cat="cojines" data-collection="geometria" data-gallery="./assets/cojin1.png|./assets/cojin2.png">
+            <div class="card-media">
+              <img src="./assets/cojin1.png" alt="Cojín geométrico tejido en tonos neutros" loading="lazy" decoding="async" width="1200" height="1200">
+            </div>
+            <div class="card-body">
+              <h3>Cojín geométrico tejido</h3>
+              <div class="price"><strong>$145.000</strong> <span class="pill">Entrega 5-7 días</span></div>
+              <button class="btn accent" data-add="cojin-geom">Agregar</button>
+            </div>
+          </article>
+
+          <article class="card" data-cat="cojines" data-collection="flora">
+            <div class="card-media">
+              <img src="./assets/cojin3.png" alt="Cojín hojas bordadas en punch needle" loading="lazy" decoding="async" width="1200" height="1200">
+            </div>
+            <div class="card-body">
+              <h3>Cojín hojas bordadas</h3>
+              <div class="price"><strong>$175.000</strong> <span class="pill">Hecho a pedido</span></div>
+              <button class="btn accent" data-add="cojin-hojas">Agregar</button>
+            </div>
+          </article>
+
+          <article class="card" data-cat="cojines" data-collection="geometria" data-gallery="./assets/cojin4.png|./assets/cojin5.png">
+            <div class="card-media">
+              <img src="./assets/cojin4.png" alt="Cojín macramé verde" loading="lazy" decoding="async" width="1200" height="1200">
+            </div>
+            <div class="card-body">
+              <h3>Cojín macramé verde</h3>
+              <div class="price"><strong>$189.000</strong> <span class="pill">Macramé</span></div>
+              <button class="btn accent" data-add="cojin-macrame">Agregar</button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Colecciones -->
+      <section class="container" style="padding-top:12px">
+        <div class="section-title"><h2 class="display">Colecciones</h2><a class="btn" href="#/colecciones" data-link>Explorar</a></div>
+        <div class="grid cols-3">
+          <a class="look" href="#/colecciones?c=flora" data-link>
+            <img src="./assets/portada.png" alt="Colección Flora"><div class="overlay"></div>
+            <div class="caption"><div class="display" style="font-size:22px">Flora</div><small>Motivos botánicos</small></div>
+          </a>
+          <a class="look" href="#/colecciones?c=geometria" data-link>
+            <img src="./assets/cojin1.png" alt="Colección Geometría"><div class="overlay"></div>
+            <div class="caption"><div class="display" style="font-size:22px">Geometría</div><small>Texturas y relieves</small></div>
+          </a>
+          <a class="look" href="#/colecciones?c=navidenos" data-link>
+            <img src="./assets/cojin6.png" alt="Colección Navideños"><div class="overlay"></div>
+            <div class="caption"><div class="display" style="font-size:22px">Navideños</div><small>Temporada</small></div>
+          </a>
+        </div>
+      </section>
+    </section>
+
+    <!-- ===== CATÁLOGO ===== -->
+    <section class="view" data-route="catalogo">
+      <div class="container">
+        <div class="section-title" style="margin-top:28px">
+          <h2 class="display">Catálogo</h2>
+          <div style="display:flex; gap:8px; flex-wrap:wrap">
+            <button class="btn" data-filter="todos">Todos</button>
+            <button class="btn" data-filter="cojines">Cojines</button>
+            <button class="btn" data-filter="bolsos">Bolsos</button>
+          </div>
+        </div>
+
+        <div class="grid cols-3" id="gridCatalogo">
+          <!-- Geométrico -->
+          <article class="card" data-cat="cojines" data-collection="geometria" data-gallery="./assets/cojin1.png|./assets/cojin2.png">
+            <div class="card-media"><img src="./assets/cojin1.png" alt="Cojín geométrico" loading="lazy" decoding="async" width="1200" height="1200"></div>
+            <div class="card-body">
+              <h3>Cojín geométrico</h3>
+              <div class="price"><strong>$145.000</strong><span class="pill">Entrega 5-7 días</span></div>
+              <button class="btn accent" data-add="cojin-geom">Agregar</button>
+            </div>
+          </article>
+
+          <!-- Hojas -->
+          <article class="card" data-cat="cojines" data-collection="flora">
+            <div class="card-media"><img src="./assets/cojin3.png" alt="Cojín hojas bordadas" loading="lazy" decoding="async" width="1200" height="1200"></div>
+            <div class="card-body">
+              <h3>Cojín hojas bordadas</h3>
+              <div class="price"><strong>$175.000</strong><span class="pill">Hecho a pedido</span></div>
+              <button class="btn accent" data-add="cojin-hojas">Agregar</button>
+            </div>
+          </article>
+
+          <!-- Macramé -->
+          <article class="card" data-cat="cojines" data-collection="geometria" data-gallery="./assets/cojin4.png|./assets/cojin5.png">
+            <div class="card-media"><img src="./assets/cojin4.png" alt="Cojín macramé verde" loading="lazy" decoding="async" width="1200" height="1200"></div>
+            <div class="card-body">
+              <h3>Cojín macramé verde</h3>
+              <div class="price"><strong>$189.000</strong><span class="pill">Macramé</span></div>
+              <button class="btn accent" data-add="cojin-macrame">Agregar</button>
+            </div>
+          </article>
+
+          <!-- Navideño copo -->
+          <article class="card" data-cat="cojines" data-collection="navidenos" data-gallery="./assets/cojin7.png|./assets/cojin8.png">
+            <div class="card-media"><img src="./assets/cojin7.png" alt="Cojín navideño copo" loading="lazy" decoding="async" width="1200" height="1200"></div>
+            <div class="card-body">
+              <h3>Cojín navideño copo</h3>
+              <div class="price"><strong>$185.000</strong><span class="pill">Temporada</span></div>
+              <button class="btn accent" data-add="cojin-navidad">Agregar</button>
+            </div>
+          </article>
+
+          <!-- Unicornio (sin colección) -->
+          <article class="card" data-cat="cojines">
+            <div class="card-media"><img src="./assets/cojin9.png" alt="Cojín unicornio" loading="lazy" decoding="async" width="1200" height="1200"></div>
+            <div class="card-body">
+              <h3>Cojín unicornio</h3>
+              <div class="price"><strong>$165.000</strong><span class="pill">Edición especial</span></div>
+              <button class="btn accent" data-add="cojin-unicornio">Agregar</button>
+            </div>
+          </article>
+
+          <!-- Rombos beige (10|11|12) -->
+          <article class="card" data-cat="cojines" data-collection="geometria" data-gallery="./assets/cojin10.png|./assets/cojin11.png|./assets/cojin12.png">
+            <div class="card-media"><img src="./assets/cojin10.png" alt="Cojín rombos beige" loading="lazy" decoding="async" width="1200" height="1200"></div>
+            <div class="card-body">
+              <h3>Cojín rombos beige</h3>
+              <div class="price"><strong>$179.000</strong><span class="pill">Hecho a pedido</span></div>
+              <button class="btn accent" data-add="cojin-rombos-beige">Agregar</button>
+            </div>
+          </article>
+
+          <!-- Navideño luces -->
+          <article class="card" data-cat="cojines" data-collection="navidenos">
+            <div class="card-media"><img src="./assets/cojin13.png" alt="Cojín navideño luces" loading="lazy" decoding="async" width="1200" height="1200"></div>
+            <div class="card-body">
+              <h3>Cojín navideño luces</h3>
+              <div class="price"><strong>$185.000</strong><span class="pill">Temporada</span></div>
+              <button class="btn accent" data-add="cojin-navideno-luces">Agregar</button>
+            </div>
+          </article>
+
+          <!-- Hojas azul -->
+          <article class="card" data-cat="cojines" data-collection="flora">
+            <div class="card-media"><img src="./assets/cojin14.png" alt="Cojín hojas azul" loading="lazy" decoding="async" width="1200" height="1200"></div>
+            <div class="card-body">
+              <h3>Cojín hojas azul</h3>
+              <div class="price"><strong>$172.000</strong><span class="pill">Hecho a pedido</span></div>
+              <button class="btn accent" data-add="cojin-hojas-azul">Agregar</button>
+            </div>
+          </article>
+
+          <!-- Hojas rosa -->
+          <article class="card" data-cat="cojines" data-collection="flora">
+            <div class="card-media"><img src="./assets/cojin15.png" alt="Cojín hojas rosa" loading="lazy" decoding="async" width="1200" height="1200"></div>
+            <div class="card-body">
+              <h3>Cojín hojas rosa</h3>
+              <div class="price"><strong>$172.000</strong><span class="pill">Hecho a pedido</span></div>
+              <button class="btn accent" data-add="cojin-hojas-rosa">Agregar</button>
+            </div>
+          </article>
+
+          <!-- Bolso flores (1|2|3) -->
+          <article class="card" data-cat="bolsos" data-collection="flora" data-gallery="./assets/bolso1.png|./assets/bolso2.png|./assets/bolso3.png">
+            <div class="card-media"><img src="./assets/bolso1.png" alt="Bolso flores punch needle" loading="lazy" decoding="async" width="1200" height="1200"></div>
+            <div class="card-body">
+              <h3>Bolso flores punch needle</h3>
+              <div class="price"><strong>$175.000</strong><span class="pill">Hecho a pedido</span></div>
+              <button class="btn accent" data-add="bolso-flores">Agregar</button>
+            </div>
+          </article>
+
+          <!-- Cojín flores (portada) -->
+          <article class="card" data-cat="cojines" data-collection="flora">
+            <div class="card-media"><img src="./assets/portada.png" alt="Cojín flores" loading="lazy" decoding="async" width="1200" height="1200"></div>
+            <div class="card-body">
+              <h3>Cojín flores</h3>
+              <div class="price"><strong>$175.000</strong><span class="pill">Hecho a pedido</span></div>
+              <button class="btn accent" data-add="cojin-flores-portada">Agregar</button>
+            </div>
+          </article>
+
+          <!-- ===== NUEVOS NAVIDEÑOS ===== -->
+          <article class="card" data-cat="cojines" data-collection="navidenos">
+            <div class="card-media"><img src="./assets/cojin16.png" alt="Cojín oso navideño" loading="lazy" decoding="async" width="1200" height="1200"></div>
+            <div class="card-body">
+              <h3>Cojín oso navideño</h3>
+              <div class="price"><strong>$185.000</strong><span class="pill">Temporada</span></div>
+              <button class="btn accent" data-add="cojin-oso-navideno">Agregar</button>
+            </div>
+          </article>
+
+          <article class="card" data-cat="cojines" data-collection="navidenos">
+            <div class="card-media"><img src="./assets/cojin17.png" alt="Cojín reno navideño" loading="lazy" decoding="async" width="1200" height="1200"></div>
+            <div class="card-body">
+              <h3>Cojín reno navideño</h3>
+              <div class="price"><strong>$185.000</strong><span class="pill">Temporada</span></div>
+              <button class="btn accent" data-add="cojin-reno-navideno">Agregar</button>
+            </div>
+          </article>
+
+          <article class="card" data-cat="cojines" data-collection="navidenos">
+            <div class="card-media"><img src="./assets/cojin18.png" alt="Cojín casitas navideñas" loading="lazy" decoding="async" width="1200" height="1200"></div>
+            <div class="card-body">
+              <h3>Cojín casitas navideñas</h3>
+              <div class="price"><strong>$185.000</strong><span class="pill">Temporada</span></div>
+              <button class="btn accent" data-add="cojin-casitas-navidenas">Agregar</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== COLECCIONES ===== -->
+    <section class="view" data-route="colecciones">
+      <div class="container">
+        <div id="collectionsOverview">
+          <div class="section-title" style="margin-top:28px"><h2 class="display">Colecciones</h2></div>
+          <div class="grid cols-3">
+            <a class="look" href="#/colecciones?c=flora" data-link>
+              <img src="./assets/portada.png" alt="Flora"><div class="overlay"></div>
+              <div class="caption"><div class="display" style="font-size:22px">Flora</div><small>Motivos botánicos</small></div>
+            </a>
+            <a class="look" href="#/colecciones?c=geometria" data-link>
+              <img src="./assets/cojin1.png" alt="Geometría"><div class="overlay"></div>
+              <div class="caption"><div class="display" style="font-size:22px">Geometría</div><small>Relieves y juego de luz</small></div>
+            </a>
+            <a class="look" href="#/colecciones?c=navidenos" data-link>
+              <img src="./assets/cojin6.png" alt="Navideños"><div class="overlay"></div>
+              <div class="caption"><div class="display" style="font-size:22px">Navideños</div><small>Temporada</small></div>
+            </a>
+          </div>
+        </div>
+
+        <div id="collectionsFiltered" style="display:none">
+          <div class="section-title" style="margin-top:28px">
+            <h2 class="display" id="collectionTitle">Colección</h2>
+            <a class="btn" href="#/colecciones" data-link>Volver a colecciones</a>
+          </div>
+          <div class="grid cols-3" id="collectionsGrid"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SOBRE ===== -->
+    <section class="view" data-route="sobre">
+      <div class="container" style="margin-top:28px">
+        <div class="about">
+          <div class="panel">
+            <h2 class="display" style="margin:0 0 12px">Una mirada lenta a los detalles</h2>
+            <p>Especialistas en <strong>punch needle</strong> y bordado creativo. Diseñamos piezas en pequeñas series y bajo pedido. Cada puntada está pensada para durar y acompañar espacios con calma.</p>
+            <p>Hecho con amor en Colombia. Enviamos a nivel nacional e internacional.</p>
+            <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap">
+              <a class="btn accent" href="#/catalogo" data-link>Comprar ahora</a>
+              <a class="btn" href="#/contacto" data-link>Solicitar pieza a medida</a>
+            </div>
+          </div>
+          <div class="panel">
+            <figure class="hero-figure"><img src="./assets/portada.png" alt="Taller / detalle textil"></figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACTO ===== -->
+    <section class="view" data-route="contacto">
+      <div class="container" style="margin-top:28px">
+        <div class="section-title"><h2 class="display">Contacto</h2></div>
+
+        <div class="about">
+          <!-- Panel izquierdo: formulario -->
+          <form id="contactForm" class="panel" autocomplete="on">
+            <div class="form-grid">
+              <label class="form-field">
+                Nombre
+                <input required name="nombre" type="text" placeholder="Tu nombre">
+              </label>
+              <label class="form-field">
+                Email
+                <input required name="email" type="email" placeholder="tucorreo@ejemplo.com">
+              </label>
+            </div>
+
+            <label class="form-field" style="margin-top:12px">
+              Mensaje
+              <textarea required name="mensaje" rows="6" placeholder="Cuéntanos qué te gustaría pedir o consultar"></textarea>
+            </label>
+
+            <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap">
+              <button class="btn accent" type="submit">Enviar</button>
+              <a class="btn" href="https://wa.me/573013748515" target="_blank" rel="noreferrer">WhatsApp</a>
+            </div>
+
+            <small style="color:var(--muted); display:block; margin-top:10px">
+              Al enviar aceptas ser contactada/o por correo.
+            </small>
+          </form>
+
+          <!-- Panel derecho: info -->
+          <aside class="panel">
+            <h3 class="display" style="font-size:22px; margin:0 0 8px">Información</h3>
+            <p>
+              Instagram:
+              <a href="https://www.instagram.com/artpunchcolombia/" target="_blank" rel="noreferrer">@artpunchcolombia</a>
+            </p>
+
+            <hr style="border:none; border-top:1px solid var(--line); margin:14px 0">
+
+            <p><strong>Envíos</strong><br>
+              Nacionales e internacionales. Empaques reciclables y protegidos.
+            </p>
+            <p><strong>Cuidados</strong><br>
+              Evitar fricción, lavar a mano en agua fría, secado a la sombra.
+            </p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CARRITO ===== -->
+    <section class="view" data-route="carrito">
+      <div class="container" style="margin-top:28px">
+        <div class="section-title"><h2 class="display">Tu carrito</h2></div>
+        <div id="cartItems" class="grid cols-2"></div>
+        <div style="margin-top:18px; display:flex; gap:12px">
+          <a class="btn" href="#/catalogo" data-link>Seguir comprando</a>
+          <a class="btn accent" id="checkoutBtn" href="#">Finalizar por WhatsApp</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Drawer móvil -->
+  <aside class="sheet" id="sheet">
+    <a href="#/inicio" data-link>Inicio</a>
+    <a href="#/catalogo" data-link>Catálogo</a>
+    <a href="#/colecciones" data-link>Colecciones</a>
+    <a href="#/sobre" data-link>Sobre</a>
+    <a href="#/contacto" data-link>Contacto</a>
+  </aside>
+
+  <footer>
+    <div class="container cols">
+      <div>
+        <a class="brand" href="#/inicio" data-link style="margin-bottom:8px; display:inline-flex">
+          <img src="./assets/logo.png" alt="Logo de Art Punch Colombia" width="40" height="40">
+          <h1>Art&nbsp;Punch&nbsp;Colombia</h1>
+        </a>
+        <p>Especialistas en punch needle y bordado creativo. Piezas hechas con amor en Colombia.</p>
+      </div>
+      <div>
+        <h4 class="display" style="font-size:18px; margin:0 0 10px">Atención</h4>
+        <a href="#/contacto" data-link>Contacto</a><br>
+        <a href="#/contacto" data-link>Envíos y devoluciones</a><br>
+        <a href="#/sobre" data-link>Cuidado de producto</a>
+      </div>
+      <div>
+        <h4 class="display" style="font-size:18px; margin:0 0 10px">Redes</h4>
+        <a href="https://www.instagram.com/artpunchcolombia/" target="_blank" rel="noreferrer">Instagram</a><br>
+        <a href="https://wa.me/573013748515" target="_blank" rel="noreferrer">WhatsApp</a>
+        <p style="margin-top:12px; font-size:12px">© 2025 Art Punch Colombia</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="./script.js"></script>
+</body>
+</html>
